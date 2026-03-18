@@ -1,0 +1,29 @@
+# getip package
+
+name: getip-package
+parent: default
+
+matches:
+  - trigger: ":getip"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "curl ifconfig.me"
+
+  - trigger: ":getipv4"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "curl -4 ifconfig.me"
+
+  - trigger: ":getipv6"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "curl -6 ifconfig.me"
